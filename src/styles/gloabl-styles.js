@@ -11,6 +11,9 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family:'Raleway', sans-serif;
     }
+    body{
+        background-color: ${({ theme }) => theme.colors.primaryColor};
+    }
 `;
 
 export const theme = {
