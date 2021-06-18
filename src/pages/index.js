@@ -1,11 +1,5 @@
-import { Appbar } from "../componets";
-
 const Home = () => {
-    return (
-        <>
-            <Appbar />
-        </>
-    );
+    return <>scs</>;
 };
 
 export default Home;

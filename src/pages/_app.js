@@ -1,10 +1,15 @@
+import { ThemeProvider } from "styled-components";
 import { Layout } from "../componets";
+import { theme, GlobalStyle } from "../styles/gloabl-styles";
 
 function MyApp({ Component, pageProps }) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </ThemeProvider>
     );
 }
 
