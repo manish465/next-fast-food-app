@@ -1,5 +1,7 @@
+import { UserForm } from "../../componets";
+
 const SignUp = () => {
-    return <div>SignUp</div>;
+    return <UserForm signup />;
 };
 
 export default SignUp;

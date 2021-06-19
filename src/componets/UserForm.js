@@ -1,14 +1,32 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const UserForm = () => {
+const UserForm = ({ signup }) => {
+    const formdata = signup
+        ? [
+              { type: "text", placeholder: "Enter Name" },
+              { type: "email", placeholder: "Enter E-mail" },
+              { type: "password", placeholder: "Enter Password" },
+              { type: "password", placeholder: "Re-Enter Password" },
+              { type: "text", placeholder: "Enter Address" },
+              { type: "text", placeholder: "Enter Phone no" },
+          ]
+        : [
+              { type: "email", placeholder: "Enter E-mail" },
+              { type: "password", placeholder: "Enter Password" },
+          ];
     return (
         <UserFormWrapper>
-            <h1>Sign in</h1>
+            <h1>{signup ? "Sign up" : "Sign in"}</h1>
             <form>
-                <TextFeild type='email' placeholder='Enter E-mail' />
-                <TextFeild type='password' placeholder='Enter Password' />
-                <Button>Sign-in</Button>
-                <Button secondary>Sign-up</Button>
+                {formdata.map((data, key) => (
+                    <TextFeild
+                        key={key}
+                        type={data.type}
+                        placeholder={data.placeholder}
+                    />
+                ))}
+                <Button>{signup ? "Sign-up" : "Sign-in"}</Button>
+                <Button secondary>{signup ? "Sign-in" : "Sign-up"}</Button>
             </form>
         </UserFormWrapper>
     );
