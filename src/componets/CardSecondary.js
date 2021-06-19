@@ -3,27 +3,24 @@ import Link from "next/link";
 import styled from "styled-components";
 import { Button } from "../styles/gloabl-styles";
 
-const Card = ({ id, image, name, price, restaurant }) => {
+const CardSecondary = ({ id, image, name, price }) => {
     return (
         <CardWrapper>
             <Link href={`/products/${id}`}>
                 <a>
-                    <Image src={image} alt={name} width={300} height={300} />
+                    <Image src={image} alt={name} width={200} height={200} />
                 </a>
             </Link>
             <article>
-                <section>
-                    <h3>{name}</h3>
-                    <h4>from {restaurant}</h4>
-                    <h4>${price}</h4>
-                </section>
+                <h3>{name}</h3>
+                <h4>${price}</h4>
                 <Button secondary>Add</Button>
             </article>
         </CardWrapper>
     );
 };
 
-export default Card;
+export default CardSecondary;
 
 const CardWrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.secondaryColor};
@@ -37,22 +34,20 @@ const CardWrapper = styled.div`
     }
     article {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         margin-top: 1rem;
-        section {
-            color: ${({ theme }) => theme.colors.primaryColor};
-            h3 {
-                margin: 0.5rem 0;
-                font-size: 1rem;
-                font-weight: bold;
-            }
-            h4 {
-                margin: 0.5rem 0;
-                font-size: 0.8rem;
-                font-weight: 600;
-            }
+        color: ${({ theme }) => theme.colors.primaryColor};
+        h3 {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        h4 {
+            margin: 0.5rem 0;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
     }
 `;
