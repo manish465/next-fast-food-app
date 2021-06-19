@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { Cart, Foods } from "../assets";
+import { Cart, Foods } from "../../assets";
 
 const Appbar = () => {
     return (

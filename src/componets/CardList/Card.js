@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { Button } from "../styles/gloabl-styles";
+import { Button } from "../../styles/gloabl-styles";
 
 const Card = ({ id, image, name, price, restaurant }) => {
     return (
         <CardWrapper>
-            <Link href={`/products/${id}`}>
-                <Image src={image} alt={name} width={300} height={300} />
+            <Link href={`/${id}`}>
+                <Image src={image} alt={name} width={300} height={250} />
             </Link>
             <article>
                 <section>

@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { Button } from "../styles/gloabl-styles";
+import { Button } from "../../styles/gloabl-styles";
 
 const CardSecondary = ({ id, image, name, price }) => {
     return (
         <CardWrapper>
-            <Link href={`/products/${id}`}>
+            <Link href={`/${id}`}>
                 <a>
                     <Image src={image} alt={name} width={200} height={200} />
                 </a>
