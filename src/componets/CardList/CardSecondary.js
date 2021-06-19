@@ -31,6 +31,10 @@ const CardWrapper = styled.div`
     img {
         border-radius: 1rem;
         cursor: pointer;
+        transition: transform 100ms ease-out;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
     article {
         display: flex;
