@@ -7,9 +7,7 @@ const Card = ({ id, image, name, price, restaurant }) => {
     return (
         <CardWrapper>
             <Link href={`/products/${id}`}>
-                <a>
-                    <Image src={image} alt={name} width={300} height={300} />
-                </a>
+                <Image src={image} alt={name} width={300} height={300} />
             </Link>
             <article>
                 <section>

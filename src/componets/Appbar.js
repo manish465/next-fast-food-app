@@ -1,22 +1,32 @@
-import styled from "styled-components";
 import Image from "next/image";
-import { Bell, Cart, Foods } from "../assets";
+import Link from "next/link";
+import styled from "styled-components";
+import { Cart, Foods } from "../assets";
 
 const Appbar = () => {
     return (
         <AppbarWrapper>
-            <Logo src='/Logo.svg' width='50' height='50' />
+            <Link href='/'>
+                <Logo src='/Logo.svg' width='50' height='50' />
+            </Link>
             <ul>
                 <li>
-                    <Bell />
+                    <Link href='/products'>
+                        <a>
+                            <Foods />
+                        </a>
+                    </Link>
                 </li>
                 <li>
-                    <Cart />
+                    <Link href='/products/order'>
+                        <a>
+                            <Cart />
+                        </a>
+                    </Link>
                 </li>
                 <li>
-                    <Foods />
+                    <Link href='/user'>MS</Link>
                 </li>
-                <li>MS</li>
             </ul>
         </AppbarWrapper>
     );

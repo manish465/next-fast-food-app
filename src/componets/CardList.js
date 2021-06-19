@@ -43,7 +43,7 @@ const CardListWrapper = styled.section`
     div {
         display: flex;
         justify-content: space-around;
-        flex-basis: ${({ altCard }) => (altCard ? "15em" : "18em")};
+        flex-basis: ${({ altCard }) => (altCard ? "14em" : "20em")};
         flex-wrap: wrap;
     }
 `;
