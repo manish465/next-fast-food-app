@@ -1,13 +1,5 @@
-import Head from "next/head";
-
 const Products = () => {
-    return (
-        <>
-            <Head>
-                <title>Fast Food | All Products</title>
-            </Head>
-        </>
-    );
+    return <>orders</>;
 };
 
 export default Products;

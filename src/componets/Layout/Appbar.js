@@ -11,14 +11,14 @@ const Appbar = () => {
             </Link>
             <ul>
                 <li>
-                    <Link href='/products'>
+                    <Link href='/all'>
                         <a>
                             <Foods />
                         </a>
                     </Link>
                 </li>
                 <li>
-                    <Link href='/products/order'>
+                    <Link href='/products'>
                         <a>
                             <Cart />
                         </a>

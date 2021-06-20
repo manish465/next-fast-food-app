@@ -5,7 +5,7 @@ import CardSecondary from "./CardSecondary";
 const CardList = ({ children, items, altCard }) => {
     return (
         <CardListWrapper altCard={altCard}>
-            <h1>{children}</h1>
+            {children ? <h1>{children}</h1> : null}
             <div>
                 {items.map((item, key) =>
                     altCard ? (
