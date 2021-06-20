@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import styled from "styled-components";
+import { productContext } from "../../context/productContext";
 import { Button } from "../../styles/gloabl-styles";
 
 const CardSecondary = ({ id, image, name, price }) => {
+    const { dispacth } = useContext(productContext);
     return (
         <CardWrapper>
             <Link href={`/products/${id}`}>
@@ -14,7 +17,15 @@ const CardSecondary = ({ id, image, name, price }) => {
             <article>
                 <h3>{name}</h3>
                 <h4>${price}</h4>
-                <AddButton>Add</AddButton>
+                <AddButton
+                    onClick={() =>
+                        dispacth({
+                            type: "ADD_PRODUCT",
+                            payload: { id, name, image, price },
+                        })
+                    }>
+                    Add
+                </AddButton>
             </article>
         </CardWrapper>
     );

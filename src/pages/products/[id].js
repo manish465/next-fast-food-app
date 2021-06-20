@@ -4,8 +4,11 @@ import styled from "styled-components";
 import mongo from "mongodb";
 import { connectToDatabase } from "../../util/mongodb";
 import { Button } from "../../styles/gloabl-styles";
+import { useContext } from "react";
+import { productContext } from "../../context/productContext";
 
 const Product = ({ product }) => {
+    const { dispacth } = useContext(productContext);
     return (
         <>
             <Head>
@@ -24,7 +27,20 @@ const Product = ({ product }) => {
                         <h3>From {product.restaurant}</h3>
                         <h3>${product.price}</h3>
                     </span>
-                    <AddButton>Add</AddButton>
+                    <AddButton
+                        onClick={() =>
+                            dispacth({
+                                type: "ADD_PRODUCT",
+                                payload: {
+                                    id: product._id,
+                                    name: product.name,
+                                    image: product.main_pic,
+                                    price: product.price,
+                                },
+                            })
+                        }>
+                        Add
+                    </AddButton>
                 </div>
                 <p>{product.description}</p>
             </ProductWrapper>
@@ -37,7 +53,7 @@ export const getStaticPaths = async () => {
     const uniqueItems = await db.collection("items").distinct("_id");
     return {
         paths: uniqueItems.map((item) => ({ params: { id: item.toString() } })),
-        fallback: true,
+        fallback: false,
     };
 };
 
