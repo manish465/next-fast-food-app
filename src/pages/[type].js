@@ -1,12 +1,14 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Tab, CardList } from "../componets";
 import { connectToDatabase } from "../util/mongodb";
 
 const Item = ({ items, uniqueItems }) => {
+    const router = useRouter();
     return (
         <>
             <Head>
-                <title>Fast Food | All Products</title>
+                <title>Fast Food | {router.asPath}</title>
             </Head>
             <Tab uniqueItems={uniqueItems} />
             <CardList items={items} altCard />

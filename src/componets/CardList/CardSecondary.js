@@ -6,7 +6,7 @@ import { Button } from "../../styles/gloabl-styles";
 const CardSecondary = ({ id, image, name, price }) => {
     return (
         <CardWrapper>
-            <Link href={`/${id}`}>
+            <Link href={`/products/${id}`}>
                 <a>
                     <Image src={image} alt={name} width={200} height={200} />
                 </a>
