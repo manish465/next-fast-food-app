@@ -15,7 +15,7 @@ const Card = ({ id, image, name, price, restaurant }) => {
                     <h4>from {restaurant}</h4>
                     <h4>${price}</h4>
                 </section>
-                <Button secondary>Add</Button>
+                <AddButton>Add</AddButton>
             </article>
         </CardWrapper>
     );
@@ -57,4 +57,7 @@ const CardWrapper = styled.div`
             }
         }
     }
+`;
+const AddButton = styled(Button)`
+    background-color: ${({ theme }) => theme.colors.accentColor};
 `;

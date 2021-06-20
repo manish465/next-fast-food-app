@@ -16,6 +16,16 @@ const Item = ({ items, uniqueItems }) => {
     );
 };
 
+export const getStaticPaths = async () => {
+    const { db } = await connectToDatabase();
+    const uniqueItems = await db.collection("items").distinct("type");
+    uniqueItems.push("all");
+    return {
+        paths: uniqueItems.map((path) => ({ params: { type: path } })),
+        fallback: false,
+    };
+};
+
 export const getStaticProps = async (context) => {
     const { type } = context.params;
     const { db } = await connectToDatabase();
@@ -27,15 +37,6 @@ export const getStaticProps = async (context) => {
     uniqueItems.push("all");
     return {
         props: { items: JSON.parse(JSON.stringify(items)), uniqueItems },
-    };
-};
-export const getStaticPaths = async () => {
-    const { db } = await connectToDatabase();
-    const uniqueItems = await db.collection("items").distinct("type");
-    uniqueItems.push("all");
-    return {
-        paths: uniqueItems.map((path) => ({ params: { type: path } })),
-        fallback: false,
     };
 };
 

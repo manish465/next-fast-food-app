@@ -1,11 +1,44 @@
 import Image from "next/image";
+import Head from "next/head";
 import styled from "styled-components";
-import { connectToDatabase } from "../../util/mongodb";
 import mongo from "mongodb";
+import { connectToDatabase } from "../../util/mongodb";
+import { Button } from "../../styles/gloabl-styles";
 
 const Product = ({ product }) => {
-    console.log(product);
-    return <ProductWrapper>scbjacs</ProductWrapper>;
+    return (
+        <>
+            <Head>
+                <title>Fast Food | {product.name}</title>
+            </Head>
+            <ProductWrapper>
+                <MainPic
+                    src={product.main_pic}
+                    alt={product.name}
+                    width={400}
+                    height={300}
+                />
+                <div>
+                    <span>
+                        <h2>{product.name}</h2>
+                        <h3>From {product.restaurant}</h3>
+                        <h3>${product.price}</h3>
+                    </span>
+                    <AddButton>Add</AddButton>
+                </div>
+                <p>{product.description}</p>
+            </ProductWrapper>
+        </>
+    );
+};
+
+export const getStaticPaths = async () => {
+    const { db } = await connectToDatabase();
+    const uniqueItems = await db.collection("items").distinct("_id");
+    return {
+        paths: uniqueItems.map((item) => ({ params: { id: item.toString() } })),
+        fallback: true,
+    };
 };
 
 export const getStaticProps = async (context) => {
@@ -19,16 +52,37 @@ export const getStaticProps = async (context) => {
     };
 };
 
-export const getStaticPaths = async () => {
-    const { db } = await connectToDatabase();
-    const uniqueItems = await db.collection("items").distinct("_id");
-    return {
-        paths: uniqueItems.map((item) => ({ params: { id: item.toString() } })),
-        fallback: true,
-    };
-};
-
 export default Product;
 
-const ProductWrapper = styled.main``;
-const MainPic = styled(Image)``;
+const ProductWrapper = styled.main`
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: ${({ theme }) => theme.colors.secondaryColor};
+    }
+    h3 {
+        font-size: 1.1rem;
+        color: ${({ theme }) => theme.colors.accentColor};
+    }
+    p {
+        margin: 2rem 6rem;
+        font-size: 1rem;
+        color: ${({ theme }) => theme.colors.accentColor};
+    }
+`;
+const MainPic = styled(Image)`
+    width: 100%;
+    object-fit: contain;
+`;
+const AddButton = styled(Button)`
+    background-color: ${({ theme }) => theme.colors.accentColor};
+`;

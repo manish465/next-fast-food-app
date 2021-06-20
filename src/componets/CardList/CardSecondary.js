@@ -14,7 +14,7 @@ const CardSecondary = ({ id, image, name, price }) => {
             <article>
                 <h3>{name}</h3>
                 <h4>${price}</h4>
-                <Button secondary>Add</Button>
+                <AddButton>Add</AddButton>
             </article>
         </CardWrapper>
     );
@@ -54,4 +54,7 @@ const CardWrapper = styled.div`
             font-weight: 600;
         }
     }
+`;
+const AddButton = styled(Button)`
+    background-color: ${({ theme }) => theme.colors.accentColor};
 `;
