@@ -6,7 +6,7 @@ import { productContext } from "../../context/productContext";
 import { Button } from "../../styles/gloabl-styles";
 
 const Card = ({ id, image, name, price, restaurant }) => {
-    const { dispacth } = useContext(productContext);
+    const { addToCart } = useContext(productContext);
     return (
         <CardWrapper>
             <Link href={`/products/${id}`}>
@@ -20,10 +20,7 @@ const Card = ({ id, image, name, price, restaurant }) => {
                 </section>
                 <AddButton
                     onClick={() =>
-                        dispacth({
-                            type: "ADD_PRODUCT",
-                            payload: { id, name, image, price },
-                        })
+                        addToCart({ id, image, name, price, multiple: 1 })
                     }>
                     Add
                 </AddButton>

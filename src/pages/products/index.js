@@ -1,12 +1,21 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { productContext } from "../../context/productContext";
 import { Button } from "../../styles/gloabl-styles";
 
 const Orders = () => {
-    const { state } = useContext(productContext);
+    const { cart, removeFromCart } = useContext(productContext);
+    const [totalPrice, setTotalPrice] = useState(0.0);
+    useEffect(() => {
+        setTotalPrice(
+            cart.reduce(
+                (total, product) => total + product.price * product.multiple,
+                0,
+            ),
+        );
+    }, [cart]);
     return (
         <>
             <Head>
@@ -14,10 +23,10 @@ const Orders = () => {
             </Head>
             <OrdersWrapper>
                 <h1>Your Order</h1>
-                {state.length === 0 ? (
+                {cart.length === 0 ? (
                     <OrderList>ADD AN ITEM TO CART</OrderList>
                 ) : (
-                    state.map((listElement, key) => (
+                    cart.map((listElement, key) => (
                         <OrderList key={key}>
                             <h3>{key + 1}.</h3>
                             <Image
@@ -27,13 +36,17 @@ const Orders = () => {
                                 height={50}
                             />
                             <h3>{listElement.name}</h3>
+                            <h3>{listElement.multiple}</h3>
                             <h3>${listElement.price}</h3>
-                            <Button>Remove One</Button>
+                            <Button
+                                onClick={() => removeFromCart(listElement.id)}>
+                                Remove One
+                            </Button>
                         </OrderList>
                     ))
                 )}
                 <footer>
-                    <span>Total : $257.74</span>
+                    <span>Total : ${totalPrice}</span>
                     <Button>Checkout</Button>
                 </footer>
             </OrdersWrapper>

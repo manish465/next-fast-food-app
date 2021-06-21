@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { productContext } from "../../context/productContext";
 
 const Product = ({ product }) => {
-    const { dispacth } = useContext(productContext);
+    const { addToCart } = useContext(productContext);
     return (
         <>
             <Head>
@@ -29,14 +29,12 @@ const Product = ({ product }) => {
                     </span>
                     <AddButton
                         onClick={() =>
-                            dispacth({
-                                type: "ADD_PRODUCT",
-                                payload: {
-                                    id: product._id,
-                                    name: product.name,
-                                    image: product.main_pic,
-                                    price: product.price,
-                                },
+                            addToCart({
+                                id: product._id,
+                                image: product.image,
+                                name: product.name,
+                                price: product.price,
+                                multiple: 1,
                             })
                         }>
                         Add
