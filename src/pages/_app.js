@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { Layout } from "../componets";
-import { theme, GlobalStyle } from "../styles/gloabl-styles";
+import { theme, GlobalStyle } from "../styles";
 import { ProductContext } from "../context/productContext";
 
 function MyApp({ Component, pageProps }) {

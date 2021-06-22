@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { productContext } from "../../context/productContext";
-import { Button } from "../../styles/gloabl-styles";
+import { Button } from "../../styles";
 
 const Orders = () => {
     const { cart, dispatch } = useContext(productContext);
@@ -36,7 +36,7 @@ const Orders = () => {
                                 height={50}
                             />
                             <h3>{listElement.name}</h3>
-                            <h3>{listElement.multiple}</h3>
+                            <h3>{listElement.quantity}</h3>
                             <h3>${listElement.price}</h3>
                             <Button
                                 onClick={() =>

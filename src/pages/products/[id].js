@@ -3,7 +3,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import mongo from "mongodb";
 import { connectToDatabase } from "../../util/mongodb";
-import { Button } from "../../styles/gloabl-styles";
+import { Button } from "../../styles";
 import { useContext } from "react";
 import { productContext } from "../../context/productContext";
 

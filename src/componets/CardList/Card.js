@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import styled from "styled-components";
 import { productContext } from "../../context/productContext";
-import { Button } from "../../styles/gloabl-styles";
+import { Button } from "../../styles";
 
 const Card = ({ id, image, name, price, restaurant }) => {
     const { dispatch } = useContext(productContext);

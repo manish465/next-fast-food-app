@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "../styles/gloabl-styles";
+import { Button } from "../styles";
 
 const UserForm = ({ signup }) => {
     const formdata = signup
