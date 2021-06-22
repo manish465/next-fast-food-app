@@ -10,10 +10,13 @@ const Orders = () => {
     const [totalPrice, setTotalPrice] = useState(0.0);
     useEffect(() => {
         setTotalPrice(
-            cart.reduce(
-                (total, product) => total + product.price * product.multiple,
-                0,
-            ),
+            cart
+                .reduce(
+                    (total, product) =>
+                        total + product.price * product.quantity,
+                    0,
+                )
+                .toFixed(2),
         );
     }, [cart]);
     return (

@@ -33,7 +33,7 @@ const Product = ({ product }) => {
                                 type: "ADD_TO_CART",
                                 payload: {
                                     id: product.id,
-                                    image: product.image,
+                                    image: product.main_pic,
                                     name: product.name,
                                     price: product.price,
                                     quantity: 1,
