@@ -6,7 +6,7 @@ import { productContext } from "../../context/productContext";
 import { Button } from "../../styles/gloabl-styles";
 
 const Orders = () => {
-    const { cart, removeFromCart } = useContext(productContext);
+    const { cart, dispatch } = useContext(productContext);
     const [totalPrice, setTotalPrice] = useState(0.0);
     useEffect(() => {
         setTotalPrice(
@@ -39,7 +39,12 @@ const Orders = () => {
                             <h3>{listElement.multiple}</h3>
                             <h3>${listElement.price}</h3>
                             <Button
-                                onClick={() => removeFromCart(listElement.id)}>
+                                onClick={() =>
+                                    dispatch({
+                                        type: "REMOVE_FROM_LIST",
+                                        payload: { id: listElement.id },
+                                    })
+                                }>
                                 Remove One
                             </Button>
                         </OrderList>
