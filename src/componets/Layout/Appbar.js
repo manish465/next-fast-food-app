@@ -24,9 +24,6 @@ const Appbar = () => {
                         </a>
                     </Link>
                 </li>
-                <li>
-                    <Link href='/user'>MS</Link>
-                </li>
             </ul>
         </AppbarWrapper>
     );

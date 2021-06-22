@@ -25,6 +25,7 @@ export const theme = {
     },
     shadow: {
         default: "5px 5px 20px rgba(0, 0, 0, 0.4)",
+        focus: "0 0 30 rgba(0,0,0,1)",
     },
 };
 
